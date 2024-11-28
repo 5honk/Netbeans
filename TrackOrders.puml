@@ -1,0 +1,65 @@
+@startuml
+
+actor user
+actor onlinePlatform
+actor logistics
+actor customerSupport
+
+
+
+usecase buy
+usecase account
+usecase orders
+usecase server
+
+usecase login
+usecase dashBoard
+usecase Database
+usecase userDatabase
+usecase itemDatabase
+
+usecase orderInfo
+usecase trackingNum
+usecase deliveryEst
+usecase productDetails
+usecase help
+
+usecase refund
+usecase exchange
+usecase returnP
+usecase processReq
+
+usecase deliveryStatus
+
+login--account
+account--orders
+server--login
+user-dashBoard
+login--dashBoard
+account--help
+help--customerSupport
+help--refund
+help--exchange
+help--processReq
+
+refund--processReq
+exchange--processReq
+help--returnP
+
+
+userDatabase--server
+onlinePlatform--Database
+Database--userDatabase
+Database--itemDatabase
+
+orders--orderInfo
+orders--trackingNum
+orders--deliveryEst
+orders--productDetails
+
+logistics--orders
+orderInfo--deliveryStatus
+
+
+
+@enduml
