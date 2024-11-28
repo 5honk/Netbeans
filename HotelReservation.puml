@@ -1,0 +1,75 @@
+@startuml
+actor guest
+actor receptionist
+actor hotelManager
+actor privateDatabase
+
+usecase website
+usecase date
+usecase typeRoom
+usecase login
+usecase webGuest
+usecase nonGuest
+usecase savedData
+usecase reservationCode
+usecase reservation
+usecase changeReservation
+usecase changeRoomType
+usecase changeDate
+usecase changeNoGuests
+usecase noGuests
+usecase checkOut
+usecase checkIn
+usecase validatePayment
+usecase printInvoice
+usecase additionalFacility
+usecase roomNum
+usecase roomInfo
+usecase requestReport
+usecase monthlyReport
+usecase databases
+
+guest--website
+website--login
+login--webGuest
+login--nonGuest
+
+
+nonGuest--date
+nonGuest--typeRoom
+nonGuest--noGuests
+noGuests--reservation
+typeRoom--additionalFacility
+typeRoom--reservation
+typeRoom-->roomNum:<<include>>
+date--reservation
+reservation--reservationCode
+
+
+webGuest--savedData
+savedData--reservationCode
+reservationCode--changeReservation
+
+changeReservation--changeRoomType
+changeReservation--changeDate
+changeReservation--changeNoGuests
+
+receptionist--reservationCode
+reservationCode--checkOut
+reservationCode--checkIn
+
+checkOut--validatePayment
+validatePayment.>printInvoice:<<extend>>
+
+databases--roomInfo
+databases--monthlyReport
+privateDatabase--databases
+reservation--monthlyReport
+roomInfo--typeRoom
+roomInfo--roomNum
+roomInfo--additionalFacility
+monthlyReport.>requestReport:<<extend>>
+hotelManager--requestReport
+
+
+@enduml
