@@ -1,0 +1,63 @@
+@startuml
+
+title Booking an Appointment
+
+actor patient
+actor doctor
+
+usecase bookingApplication
+usecase slots
+usecase time
+usecase date
+usecase avaliable
+usecase unavaliable
+usecase scheduleAvalibility
+usecase davaliability
+usecase dunavaliability
+usecase showOtherSlots
+usecase confirm
+
+usecase dfName
+usecase dsName
+usecase dInfo
+usecase dID
+usecase sendEmailSMS
+
+
+patient--bookingApplication
+bookingApplication--slots
+
+slots--avaliable
+slots--unavaliable
+unavaliable--showOtherSlots
+
+avaliable--date
+avaliable--time
+date--confirm
+time--confirm
+
+
+doctor--dInfo
+dInfo--scheduleAvalibility
+dInfo--dfName
+dInfo--dsName
+dInfo--dID
+scheduleAvalibility--davaliability
+scheduleAvalibility--dunavaliability
+
+davaliability--avaliable
+
+confirm--sendEmailSMS
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
