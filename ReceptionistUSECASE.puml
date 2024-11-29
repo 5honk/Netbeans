@@ -1,0 +1,55 @@
+@startuml
+
+title Receptionist
+
+actor receptionist
+
+usecase patientDatabase
+usecase PC
+usecase registerPatient
+usecase fname
+usecase sname
+usecase age
+usecase contact
+usecase patientID
+
+usecase queryPatient
+usecase checkDuplicaton
+usecase online
+usecase offline
+usecase ERROR
+
+
+
+receptionist--PC
+PC--patientDatabase
+patientDatabase--queryPatient
+
+patientDatabase.>registerPatient: << Extends >>
+registerPatient-->fname: <<Includes>>
+registerPatient-->sname: <<Includes>>
+registerPatient-->contact: <<Includes>>
+registerPatient-->age: <<Includes>>
+
+fname--checkDuplicaton
+sname--checkDuplicaton
+age--checkDuplicaton
+contact--checkDuplicaton
+
+queryPatient--online
+online--patientID
+
+checkDuplicaton--online
+checkDuplicaton--offline
+offline--ERROR
+
+
+
+
+
+
+
+
+
+
+@enduml
