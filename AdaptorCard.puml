@@ -1,0 +1,33 @@
+@startuml
+class card {
+    cardNo: Int
+    sortCode: Int
+    pin:Int
+    -checkBalance(): Float
+    -sendMoney(): Float
+    -recieveMoney(): Float
+}
+
+class paypal {
+    cardInfo: Int
+    user: String
+    password: String
+    -postDeductFromCard(): Float
+    -postAddFromCard(): Float
+}
+
+class paymentProcessAdaptor {
+    connection: String
+    cardInfo: Int
+    paypalInfo: int
+    getReq: int, String
+    getPost: int, String
+    -checkBalanceOfCard(): Float
+    -deduct(): Float
+    -add(): Float
+}
+
+paymentProcessAdaptor-->card
+paymentProcessAdaptor-->paypal
+
+@enduml
